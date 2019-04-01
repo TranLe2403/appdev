@@ -1,39 +1,30 @@
 #include <stdio.h>
 #include <curl/curl.h>
 
-int main(int argc, char **argv)
-{
-  CURL *c;
-  CURLcode res;
+int main(int argc, char **argv){
+	CURL *c;
+	CURLcode res;
 	char poststr[128];
 	if(argc<3) {
 		printf("Usage: %s [ID] [email]\n", argv[0]); 
 		return 1;
 	}
 	sprintf(poststr, "ID=%s&email=%s", argv[1], argv[2]);
-  /* In windows, this will init the winsock stuff */
-  curl_global_init(CURL_GLOBAL_ALL);
+	curl_global_init(CURL_GLOBAL_ALL);
 
-  /* get a curl handle */
-  c = curl_easy_init();
-  if(c) {
-    /* First set the URL that is about to receive our POST. This URL can
-       just as well be a https:// URL if that is what should receive the
-       data. */
-    curl_easy_setopt(c, CURLOPT_URL, "http://www.cc.puv.fi/~e1800952/curl.php");
-    /* Now specify the POST data */
-    curl_easy_setopt(c, CURLOPT_POSTFIELDS, poststr);
+	c = curl_easy_init();
+  	if(c) {
+	    curl_easy_setopt(c, CURLOPT_URL, "http://www.cc.puv.fi/~e1800952/curl.php");
+	    curl_easy_setopt(c, CURLOPT_POSTFIELDS, poststr);
 
-    /* Perform the request, res will get the return code */
-    res = curl_easy_perform(c);
-    /* Check for errors */
-  	if(res != CURLE_OK) printf("Communication is not ok");
+	    res = curl_easy_perform(c);
 
-	else printf("Data is sent\n");
+	  	if(res != CURLE_OK) printf("Communication is not ok");
 
-    /* always cleanup */
-    curl_easy_cleanup(c);
-  }
-  curl_global_cleanup();
-  return 0;
+		else printf("Data is sent\n");	
+
+	    curl_easy_cleanup(c);
+  	}
+ 	curl_global_cleanup();
+  	return 0;
 }
