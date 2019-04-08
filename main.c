@@ -1,5 +1,5 @@
 #include <stdlib.h>
-#include <time.h>
+//#include <time.h>
 #include "screen.h"
 #include <signal.h>
 #include "sound.h"

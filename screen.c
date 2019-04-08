@@ -4,11 +4,15 @@
 
 #include <stdio.h>
 #include "screen.h"
+//#define MAX 60
 void bar_chart(int db[]){
 	int i, j;
 	for(i=0; i<COL; i++){	// This will make 80 cols
 		for(j=0; j<db[i]/3; j++){
+			if(j*3 > 60 && j>20)	colors(GREEN, bg(YELLOW));
+			else colors(RED, bg(YELLOW));
 			printf("\033[%d;%dH", 60-j, i+1);
+
 #ifdef UNICODE 	// conditional compilation
 			printf("%s", BAR);
 #else
