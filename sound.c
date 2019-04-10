@@ -9,6 +9,15 @@ void showID(char *idname,char *id){
 	for(i=0; i<4; i++)	printf("%c", id[i]);
 	puts("");
 }
+int findpeaks(int d[]){
+	int c = 0;
+	for(int i=1; i<80; i++){
+		if(d[i]>=75 && d[i-1]<75) c++;
+	}
+	if(d[0]>75) c++;
+	return c;
+}
+
 	//this function gets 1 sec of sample (16000), and cal 80 pieces of db value
 	//we know we need to cal one db value 
 	//from 200 samples, db value is cal by RMS formula
@@ -32,8 +41,14 @@ void displayWAVDATA(short s[]){
 	}
 #ifndef DEBUG
 	bar_chart(dB);
+	int peaks = findpeaks(dB);
+	colors(WHITE, bg(BLACK));
+	printf("\033[1;61H");
+	printf("Peaks: %d           \n", peaks);
 #endif
 }
+//this function is only called by displayWAVDATA(), so no need to put 
+//a declaration in sound.h. The function finds how many peaks from 80-pieces of db values
 void displayWAVHDR(struct WAVHDR h){
 #ifdef DEBUG
 	showID("ChunkID", h.ChunkID);

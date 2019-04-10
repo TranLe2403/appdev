@@ -4,6 +4,8 @@
 #include <signal.h>
 #include "sound.h"
 #include <stdio.h>
+#include "comm.h"
+
 int main(){
 	FILE *f;
 	short sd[RATE];
@@ -23,6 +25,7 @@ int main(){
 		fclose(f);
 		displayWAVHDR(hdr);
 		displayWAVDATA(sd);
+		sendDATA(sd);
 	}
 	reset_color();
 	//getchar();
