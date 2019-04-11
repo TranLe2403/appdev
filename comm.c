@@ -18,7 +18,7 @@ void sendDATA(short s[]){
 		double rms = sqrt(sum/2000);
 		db[i] = 20*log10(rms);
 #ifdef DEBUG
-		printf("db[%d]= %.2f\n", db[i]);
+		printf("db[%d]= %.2f\n", i, db[i]);
 #endif
 	}
 	//create post string
