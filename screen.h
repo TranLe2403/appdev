@@ -7,7 +7,7 @@ enum COLORS {BLACK=30, RED, GREEN, YELLOW, BLUE, MAGENTA, CYAN, WHITE};
 #define BAR "\u2590"
 // function declaration 
 
-void clearscrn(void);
+void clearscreen(void);
 void colors(short, short);
 void reset_color(void);
 void bar_chart(int []);
