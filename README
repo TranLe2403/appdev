@@ -1,1 +1,36 @@
-# This is appdev  ver 1
+# This is appdev  ver 1 ----- by Tran Le
+
+This app offers possibility to turn a Raspberry Pi as a sound device. The app comes with 2 function: a sound collector and a test tone generator.
+
+List of content
+	1. Configuration Instructions
+		SD card
+		Raspberry Pi
+		sound card
+		HDMI cable
+		headphone
+		microphone
+	2. Installation Instructions
+		- Download Noobs via https://www.raspberrypi.org/downloads/noobs/ and copy to SD card
+		- Set default booting
+		- Set default of sound card
+
+	3. Operating Instructions
+
+	4. List of Files
+		comm.c
+		comm.h
+		main.c
+		makefile
+		screen.c
+		screen.h
+		sound.c
+		sound.h
+		sound.php
+		testcurl.c
+
+	5. Copyright / Copyleft
+
+	6. Contact Info
+
+	7. Credits and Acknowledgements
