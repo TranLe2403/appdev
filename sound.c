@@ -31,7 +31,7 @@ void testTone(int c, int fl, int fr, float d){
 	int samples = 44100*d, i;
 	fillID(h.ChunkID, "RIFF");
 	fillID(h.Format, "WAVE");
-	fillID(h.Subchunk1ID, "fmt");
+	fillID(h.Subchunk1ID, "fmt ");
 	fillID(h.Subchunk2ID, "data");
 	h.Subchunk1Size = 16; 	//constant value
 	h.AudioFormat = 1;

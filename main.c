@@ -19,14 +19,14 @@ int main(int argc, char **argv){
 		}
 		else if(ch==2){
 			printf("Give me left and right frequency: ");
-			scanf("%d %d", &fL, &fR)
+			scanf("%d %d", &fL, &fR);
 		}
 		else{
 			printf("Wrong num of channels");
 			return 1;
 		}
 		printf("Duration of sound: ");
-		scanf("%f", &duration)
+		scanf("%f", &duration);
 		testTone(ch, fL, fR, duration);
 		return 0;
 	}
