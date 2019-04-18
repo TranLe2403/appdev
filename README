@@ -1,21 +1,51 @@
-# This is appdev  ver 1 ----- by Tran Le
+# This is application development  ver 1 ----- by Tran Le
 
-This app offers possibility to turn a Raspberry Pi as a sound device. The app comes with 2 function: a sound collector and a test tone generator.
+This application offers possibility to turn a Raspberry Pi as a sound device. The application comes with 2 function: a sound collector and a test tone generator.
 
 List of content
 	1. Configuration Instructions
 		SD card
 		Raspberry Pi
 		sound card
-		HDMI cable
+		HDMI cables
 		headphone
 		microphone
 	2. Installation Instructions
-		- Download Noobs via https://www.raspberrypi.org/downloads/noobs/ and copy to SD card
-		- Set default booting
-		- Set default of sound card
+		2.1 Set default booting
+			- Connect RPi to a display via HDMI-DIV cable and connect to keyboard as well
+			- Ctrl+ESC: open terminal window and choose from the Accessories
+			- Run "sudo raspi-config"
+			- Select from "boot options": Text console, auto-login
+			- Enable SSH
+			- Reboot by using "sudo reboot"
+		2.2 Set default of sound card
+			- Change the default audio device to be USB sound card.
+			- Use "lsusb": check if USB sound card is mounted 
+			- Type the code for commands "sudo nano /etc/asound.conf" and "nano .asoundrc"
+				pcm.!default {
+				  type plug
+				  slave {
+				  pcm "hw:1,0"
+				  }
+				}
+				ctl.!default {
+				    type hw
+				    card 1
+				}
+			- Run "alsamixer": check the default audio device of USB sound card
+				 
+		2.3 Install libcurl
+			- Use command "ls /usr/include/curl" or "ls /usr/include/arm-linux-gnueabihf/curl"
+			- Run "sudo apt-get update": update the application list
+			- Run "sudo apt-get install libcurl3": install the libcurl3
+			- Run "sudo apt get install libcurl4-openssl-dev": install the development API of libcurl4
 
 	3. Operating Instructions
+			- Use "git clone https://github.com/TranLe2403/appdev": to download and run the code
+			- Use "make" command to compile the files 
+			- Use command "./sound.out" if to analyse the sound received
+			- Use command "./sound.out arg" if to create the sound
+			- Use "scp testTone.wav *email address*:." to copy sound made from this project
 
 	4. List of Files
 		comm.c
@@ -30,7 +60,13 @@ List of content
 		testcurl.c
 
 	5. Copyright / Copyleft
+		It is belong to Le Tran. but everyone can be allowed to use
 
 	6. Contact Info
+		Name: Tran Le
+		Email address: trantran.0324@gmail.com
 
 	7. Credits and Acknowledgements
+		Vaasa University of Applied Sciences
+		Le Tran
+		Chao Gao		
